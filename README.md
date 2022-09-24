@@ -14,6 +14,6 @@ This repo has two important functions:
 
 ### More scientific Proofs
 Fardin showed in a publication called [On the rheology of cats](https://www.drgoulu.com/wp-content/uploads/2017/09/Rheology-of-cats.pdf) in 2014 some indication which could confirm the hypothesis.
-This was so convincing that **he even won a _Nobel_ prize** (very precisely the IG-Nobel prize but this is a small detail)
+This was so convincing that **he even won a _Nobel_ prize** (very precisely the IG-Nobel prize but this is a small detail).
 
 [If you have further question about this repo](http://endless.horse/)

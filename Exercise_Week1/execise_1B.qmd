@@ -1,0 +1,66 @@
+---
+title: "Week 1, Assignment 1B"
+author: "Lukas Moser"
+format: html
+editor: visual
+---
+
+# Exercise: Week 1, Part B:
+
+## Exercise:
+
+Create an HTML document with R code that samples 100 values from a negative binomial distribution (say, mu=10, dispersion=2; using the parameterisation with mean=mu and variance=mu+mu2\*dispersion); create a histogram of sampled data on both the linear and log \[or maybe log(x+1) due to zeros\] scale; Write 1-2 sentences to describe your steps (ideally also with section headings) and report the mean and variance of the sample in line in the text.
+
+## Create the samples distribution
+
+First write down all the given parameters:
+
+```{r}
+size <- 100
+mu <- 10
+dispersion <- 2
+mean <- mu
+variance <- mu+mu^2*dispersion
+```
+
+In a next step create the sampling:
+
+As I am not very familiar with this notation of a negative binominal distribution, I checked [here](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/NegBinomial.html) for a better understanding. It states: "An alternative parametrization (often used in ecology) is by the mean mu (see above), and size, the dispersion parameter, where prob = size/(size+mu). The variance is mu + mu\^2/size in this parametrization."
+
+
+**What confuses me a little bit is that everywhere variance is defined as: mu + mu\^2/dispersion, however in the exercise it is defined as mu+mu\^2\*dispersion, which looks somehow weird to me.**
+
+```{r}
+x1 <- rnbinom(100, mu = 10, size = 2)
+```
+
+Now we can make the linear histogram:
+
+```{r}
+h1 <- hist(x1, breaks = 20, xlab= "random variable", 
+           main= "Negative Binominal Distribution (linear)")
+```
+
+Now we can do the same on a log scale:
+
+```{r}
+hist1_log = log10(h1$counts)
+hist.data = hist(x1, breaks = 20, plot = FALSE )
+hist.data$counts = log10(hist.data$counts+1)
+plot(hist.data, ylab='log10(Frequency+1)', 
+     xlab= "random variable", 
+     main= "Negative Binominal Distribution (log10(x+1))", 
+     col = "lightgrey")
+
+```
+
+Next we will get the mean and variance of the sample:
+
+```{r}
+mean_sample = mean(x1)
+variance_sample = var(x1)
+```
+
+The mean of the sample is `r mean_sample` and the variance of the sample is `r variance_sample`.
+
+
